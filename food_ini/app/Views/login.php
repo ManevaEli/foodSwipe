@@ -17,19 +17,25 @@
       <p>Swipez. Savourez. Régalez-vous.</p>
     </div>
 
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="login-email" placeholder="vous@exemple.com" autocomplete="email" />
-    </div>
-
-    <div class="form-group">
-      <label>Mot de passe</label>
-      <input type="password" id="login-pwd" placeholder="••••••••" autocomplete="current-password" />
-    </div>
-
-    <p class="form-error" id="login-error">Email ou mot de passe incorrect.</p>
-
-    <button class="btn-primary" onclick="doLogin()">Se connecter 🍴</button>
+    <form action="<?= base_url('/loginPost') ?>" method="post">
+      <?= csrf_field() ?>
+      
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" id="login-email" placeholder="vous@exemple.com" required />
+      </div>
+      
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <input type="password" name="password" id="login-pwd" placeholder="••••••••" required />
+      </div>
+      
+      <?php if (session()->getFlashdata('error')): ?>
+        <p class="form-error" id="login-error"><?= session()->getFlashdata('error') ?></p>
+      <?php endif; ?>
+      
+      <button type="submit" class="btn-primary">Se connecter 🍴</button>
+    </form>
 
     <div class="auth-switch">
       Pas encore de compte ? <a href="<?= base_url('register') ?>">S'inscrire</a>
@@ -37,44 +43,6 @@
 
   </div>
 </div>
-
-<script>
-  function doLogin() {
-    const email = document.getElementById('login-email').value.trim();
-    const pwd   = document.getElementById('login-pwd').value;
-    const err   = document.getElementById('login-error');
-
-    if (!email || !pwd) {
-      err.textContent = 'Veuillez remplir tous les champs.';
-      err.classList.add('visible');
-      return;
-    }
-
-    err.classList.remove('visible');
-
-    const user = JSON.parse(localStorage.getItem('fs_user') || 'null');
-    if (user && user.email === email && user.pwd === pwd) {
-      localStorage.setItem('fs_logged', 'true');
-      window.location.href = 'home.html';
-    } else if (!user) {
-      // Demo mode : first login always works
-      localStorage.setItem('fs_user', JSON.stringify({ name: 'Invité', email, pwd }));
-      localStorage.setItem('fs_logged', 'true');
-      window.location.href = 'home.html';
-    } else {
-      err.textContent = 'Email ou mot de passe incorrect.';
-      err.classList.add('visible');
-    }
-  }
-
-  // Already logged in → redirect
-  if (localStorage.getItem('fs_logged') === 'true') {
-    window.location.href = 'home.html';
-  }
-
-  // Enter key support
-  document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
-</script>
 
 </body>
 </html>
