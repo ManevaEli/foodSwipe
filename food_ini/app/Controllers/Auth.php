@@ -16,7 +16,7 @@ class Auth extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        $userModel = new UserModel();
+        $userModel = new \App\Models\UserModel();
         $user = $userModel->where('email', $email)->first();
 
         if ($user && $password === $user['mdp']) {
