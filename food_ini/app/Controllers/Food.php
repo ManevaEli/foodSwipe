@@ -12,4 +12,17 @@ class Food extends BaseController
     {
         return view('register');
     }
+    public function home()
+    {
+        return view('home');
+    }
+        public function stats()
+    {
+        return view('stats');
+    }
+            public function add()
+    {
+        return view('add-food');
+    }
+
 }

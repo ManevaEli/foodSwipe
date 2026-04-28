@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FoodSwipe — Découvrir</title>
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 <body>
 
@@ -45,10 +45,10 @@
     <a href="home.html" class="active">
       <span class="nav-icon">🔥</span>Découvrir
     </a>
-    <a href="add-food.html">
+    <a href="<?= base_url('add-food') ?>"">
       <span class="nav-icon">➕</span>Ajouter
     </a>
-    <a href="stats.html">
+    <a href="<?= base_url('stats') ?>">
       <span class="nav-icon">📊</span>Mes stats
     </a>
   </div>
@@ -56,11 +56,11 @@
 </div>
 
 <script>
-  /* ── Auth guard ── */
+  /* ── Auth guard ── 
   if (localStorage.getItem('fs_logged') !== 'true') {
     window.location.href = 'login.html';
   }
-
+*/
   function logout() {
     localStorage.setItem('fs_logged', 'false');
     window.location.href = 'login.html';
