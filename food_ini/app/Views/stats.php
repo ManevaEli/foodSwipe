@@ -92,13 +92,13 @@
 
   <!-- Bottom Nav -->
   <div class="bottom-nav">
-    <a href="home.html">
+    <a href="<?= base_url('home') ?>" class="active">
       <span class="nav-icon">🔥</span>Découvrir
     </a>
-    <a href="add-food.html">
+    <a href="<?= base_url('add-food') ?>"">
       <span class="nav-icon">➕</span>Ajouter
     </a>
-    <a href="stats.html" class="active">
+    <a href="<?= base_url('stats') ?>">
       <span class="nav-icon">📊</span>Mes stats
     </a>
   </div>

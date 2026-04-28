@@ -24,5 +24,6 @@ class Food extends BaseController
     {
         return view('add-food');
     }
+ 
 
 }

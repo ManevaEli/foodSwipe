@@ -36,4 +36,26 @@ class Auth extends BaseController
         session()->destroy();
         return redirect()->to('/');
     }
+
+       public function insertUser()
+    {
+
+        $name = $this->request->getPost('nom');
+        $email =$this->request->getPost('email');
+        $password = password_hash($this->request->getPost('mdp'), PASSWORD_DEFAULT);
+
+        $data = [
+            'nom' => $name,
+            'email'=> $email,
+            'mdp'=> $password
+        ];
+
+        $userModel = new UserModel();
+
+            if ($userModel->insert($data)) {
+        return redirect()->to('/login')->with('success', 'Compte créé avec succès');
+    } else {
+        return redirect()->back()->with('error', 'Erreur lors de la création du compte');
+    }
 }
+    }

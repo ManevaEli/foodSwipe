@@ -1,4 +1,4 @@
-# Creation du db 'food_app1' et utilisation de celle ci
+# Creation du db 'food_app1 et utilisation de celle ci
 CREATE DATABASE IF NOT EXISTS `food_app1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 # Creation de l'utilisateur 'food-user' avec mot de passe 'password' et attribution des droits

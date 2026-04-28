@@ -42,7 +42,7 @@
 
   <!-- Bottom Nav -->
   <div class="bottom-nav">
-    <a href="home.html" class="active">
+      <a href="<?= base_url('home') ?>">
       <span class="nav-icon">🔥</span>Découvrir
     </a>
     <a href="<?= base_url('add-food') ?>"">

@@ -9,10 +9,14 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Auth::login');
 $routes->post('/loginPost', 'Auth::loginPost');
 $routes->get('/logout', 'Auth::logout');
+$routes->post('/insertUser', 'Auth::insertUser');
 
 $routes->get('/register', 'Food::register');
 $routes->get('/home', 'Food::home');
 $routes->get('/stats', 'Food::stats');
 $routes->get('/add-food', 'Food::add');
+
+
+
 
 
